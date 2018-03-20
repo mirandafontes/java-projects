@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="AbstractFactory/src"/>
+	<classpathentry kind="src" path="blok-java/src"/>
+	<classpathentry kind="src" path="Command/src"/>
+	<classpathentry kind="src" path="Decorator/src"/>
+	<classpathentry kind="src" path="ExercicioPweb/src"/>
+	<classpathentry kind="src" path="ExercicioPWebJSP/src"/>
+	<classpathentry kind="src" path="Logistica/src"/>
+	<classpathentry kind="src" path="MensagensBoaSorte/src"/>
+	<classpathentry kind="src" path="ProvaPWeb2017.2/src"/>
+	<classpathentry kind="src" path="Sockets/src"/>
+	<classpathentry kind="lib" path="blok-java/lib/jbox2d-library-2.1.2.2-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="blok-java/plugins/DefaultSkin.jar"/>
+	<classpathentry kind="lib" path="blok-java/plugins/KappaSkin.jar"/>
+	<classpathentry kind="lib" path="Command/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="Command/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="Decorator/plugins/CaldaChocolate.jar"/>
+	<classpathentry kind="lib" path="Decorator/plugins/ChocolateGranulado.jar"/>
+	<classpathentry kind="lib" path="Decorator/plugins/MassaChocolate.jar"/>
+	<classpathentry kind="output" path="AbstractFactory/bin"/>
+</classpath>

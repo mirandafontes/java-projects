@@ -1,0 +1,125 @@
+IFBA
+Curso : Análise e Desenvolvimento de Sistemas ( ADS )
+Disciplina: INF008 ( Programação Orientada a Objetos - POO )
+Professor(a): Frederico
+Alunos :
+	Diogo Cardoso Silva  -  2016116015 
+	Paulo Ricardo Miranda Fontes  -  2016116044
+	Ricardo Martins Carvalho  -  2016116048
+	
+Data : 29/10/2017 
+	
+
+Trabalho de simulação de uma empresa de logistica com interface para cadastro e contratação de serviço.
+A persistência foi realizada utilizando o JDBC do PostgreSQL.
+A interface gráfica, usando o plugin WindowBuilder do Eclipse Neon.
+
+Os paramêtros de conexão ao banco estão em :
+
+logisticassa.persistencia.sql.GenericDAOSQL
+
+O main, com interface gráfica está em :
+
+logisticassa.ui.jfc.Janela
+
+Este é o script a ser executado.
+
+O SQL de criação da tabela ( é NECESSÁRIO criar as tabelas no banco ANTES de executar o projeto ) :
+
+				  	SQL DAS TABELAS
+				  	
+					create table rotas (	
+					
+							id int,		
+							nome varchar(255),
+							destino varchar(255),
+							origem varchar(255),
+							tempoEntrega int,	
+							custoGrama double precision,
+							capacidadeTotal double precision,
+							capacidadeAlocada double precision,	
+							tipo varchar(1),
+							constraint id primary key ( id )
+						
+					);
+						
+					create table fracionarias (
+						
+
+							id_fracionada int,
+							id_rota int,
+							foreign key ( id_fracionada ) references rotas( id ),
+							foreign key ( id_rota ) references rotas( id )	
+							
+					);
+					
+Após rodar o projeto, aparecerá uma tela única, tanto para o cadastro quanto para o usuário.	
+
+Sobre o painel cadastro:
+
+	ID: ID da rota a ser cadastrada.
+	Nome: Nome da rota a ser cadastrada.
+	Origem: Origem da rota a ser cadastrada.
+	Destino: Destino da rota a ser cadastrada.
+	Botão de Rádio Direta: Indica que a rota a ser cadastrada será uma rota direta.
+	Botão de Rádio Fracionario: Indica que a rota a ser cadastrada será uma rota fracionada.
+	
+	Ao selecionar o botão de rádio Direta:
+	
+		Tempo de Entrega: Tempo de entrega, em dias.
+		Custo Grama: Custo por grama, em Reais.
+		Capacidade Total: Capacidade total da rota, em Kg.
+		
+	Ao selecionar o botão de rádio Fracionario:
+	
+		ID's: Uma área reservada a atribuir ID's de outras rotas a rota fracionaria. 
+		Adicionar ID: adiciona o ID marcado em ID's para a rota fracionaria a ser cadastrada.
+			( No mínimo dois ID's )
+		( Ao selecionar o botão de rádio Fracionária, os campos de Origem e Destino serão desativados
+		  pois, pelos próprios ID's cadastrados na rota Fracionária, ele irá puxar tais informações )
+		  
+			
+	Rotas Cadastradas: Exibe todas as rotas já cadastradas no sistema.
+		( Útil na hora de cadastrar a rota fracionária )
+		
+	Botão Cadastrar: Cadastra a rota de acordo com as opções selecionadas. Atualizando a tela.
+	Campo de Avisos ( abaixo do botão cadastrar ): Uma caixa de texto que irá indicar algum estado que
+												   venha a ocorrer durante o processo.
+	
+	Exemplo de funcionamento:
+	
+		Após a inserção dos campos: ID, Nome, Origem, Destino
+		Selecione o tipo de rota.
+		Caso Fracionária, os campos Origem e Destino serão desativados.
+		Por meio do spinner ID's, selecione no minimo 2 ( dois ) ID's utilizando como base o Rotas Cadastradas.
+		Logo em seguida, aperte Cadastrar e obseve a caixa de avisos.
+		
+		Caso Direta, inserir os demais campos e logo em seguida clicar em Cadastrar.
+		Observar a caixa de avisos.
+		
+Sobre o painel Contrato:
+
+	Origem: Lista com todas as origens disponíveis.
+	Destino: Com base na origem selecionada, gera os destinos disponíveis.
+	Peso: O peso do volume que o usuário deseja cadastrar. ( Em Kg )
+	Rotas: Lista com todas as rotas disponíveis para aquela configuração de Origem-Destino.
+	Valor: Campo com o valor ( em Reais ) da rota selecionada.
+	Contratar: Botão para realizar o contrato, atualizando os campos.
+	Campo de Avisos 1 : Caixa de texto que irá indicar os estados do contrato.
+	Campo de Avisos 2 : Caixa de texto que irá indicar os estados do painel do contrato.
+	
+
+	Exemplo de funcionamento:
+	
+		Escolhida a origem, os destinos cadastrados para aquela origem irão surgir.
+		Escolhido o destino, as rotas disponíveis com base na Origem-Destino irão surgir.
+		Escolhido o peso, o valor será atualizado com base na rota selecioanada.
+		As rotas serão exibidas na lista Rotas.
+		O valor, atualizado com base no peso e na rota selecionada.
+		O botão cadastrar, contrata o serviço se possível. ( Observar as caixas de aviso )
+		
+Todos os campos com Spinners ( ID, Tempo Entrega, Custo Grama, Capacidade Total, ID's e Peso )
+são passíveis de edição diretamente do teclado, ou seja, podendo ser digitado diretamente o valor
+a ser selecionado, apertando Enter, logo em seguida, para confirmar o texto digitado.
+	
+	
