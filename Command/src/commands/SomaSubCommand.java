@@ -8,12 +8,13 @@ public class SomaSubCommand implements ICommand {
 	private Calculadora calculadora;
 	
 	private double valor;
-	
+		
 	public SomaSubCommand( Calculadora calculadora, double valor ) {
 		
 		this.calculadora = calculadora;
-		this.valor = valor;
 		
+		this.valor = valor;
+			
 	}
 
 	@Override

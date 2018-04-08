@@ -47,7 +47,8 @@ public class ClienteUI {
 	
 	private JButton btnUndo;
 	private JButton btnEnter;
-		
+	private JButton btnRedo;	
+	
 	private JTextField factorTextField;
 	private JTextField operatorTextField;
 	
@@ -194,9 +195,9 @@ public class ClienteUI {
 		
 		btnUndo = new JButton("Undo");
 		btnUndo.addActionListener(new ActionListener() {
-			public void actionPerformed (ActionEvent e ) {
+			public void actionPerformed ( ActionEvent e ) {
 				
-				caller.removeAndUnexecute();
+				caller.unexecute();
 				
 				mainTextField.setText( Double.toString( calculator.getTotal() )  );
 				
@@ -273,7 +274,7 @@ public class ClienteUI {
 				
 				int valor = Integer.parseInt( factorTextField.getText() );
 				
-				if( operator.equals("+") ) {
+				if( operator.equals("+") && valor != 0 ) {
 					
 					SomaSubCommand soma = new SomaSubCommand( calculator, valor );
 					
@@ -284,7 +285,7 @@ public class ClienteUI {
 					
 				}
 				
-				else if( operator.equals("-") ) {
+				else if( operator.equals("-") && valor != 0 ) {
 					
 					SomaSubCommand sub = new SomaSubCommand( calculator, -valor );
 					
@@ -295,7 +296,7 @@ public class ClienteUI {
 					
 				}
 				
-				else if( operator.equals("*") ) {
+				else if( operator.equals("*") && valor != 0 ) {
 										
 					MultDivCommand mult = new MultDivCommand( calculator, valor );
 					
@@ -305,7 +306,7 @@ public class ClienteUI {
 					
 				}
 				
-				else {
+				else if( operator.equals("/") && valor != 0 ) {
 					
 					MultDivCommand div = new MultDivCommand( calculator, 1.0d / valor );
 					
@@ -325,6 +326,21 @@ public class ClienteUI {
 		gbc_btnEnter.gridx = 1;
 		gbc_btnEnter.gridy = 5;
 		numberPanel.add(btnEnter, gbc_btnEnter);
+		
+		btnRedo = new JButton("Redo");
+		btnRedo.addActionListener(new ActionListener() {
+			public void actionPerformed( ActionEvent e ) {
+				
+				caller.reexecute();
+				
+				mainTextField.setText( Double.toString( calculator.getTotal() )  );
+				
+			}
+		});
+		GridBagConstraints gbc_btnRedo = new GridBagConstraints();
+		gbc_btnRedo.gridx = 3;
+		gbc_btnRedo.gridy = 5;
+		numberPanel.add(btnRedo, gbc_btnRedo);
 		numberPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{button_10, button_11, button_12, button_13, button_7, button_8, button_9, btnUndo, button_4, button_5, button_6, button_1, button_2, button_3, button_0, btnEnter}));
 
 	}

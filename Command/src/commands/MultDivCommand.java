@@ -12,6 +12,7 @@ public class MultDivCommand implements ICommand {
 	public MultDivCommand( Calculadora calculadora, double valor ) {
 		
 		this.calculadora = calculadora;
+		
 		this.valor = valor;
 		
 	}
